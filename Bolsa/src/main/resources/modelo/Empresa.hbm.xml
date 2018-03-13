@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/03/2018 01:44:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Empresa" table="empresa" schema="public" optimistic-lock="version">
+        <id name="idEmpresa" type="int">
+            <column name="id_empresa" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreEmpresa" type="string">
+            <column name="nombre_empresa" length="90" />
+        </property>
+        <property name="oficinas" type="string">
+            <column name="oficinas" length="90" />
+        </property>
+        <property name="fundacion" type="string">
+            <column name="fundacion" length="90" />
+        </property>
+        <property name="numeroempleados" type="java.lang.Integer">
+            <column name="numeroempleados" />
+        </property>
+        <property name="presidente" type="string">
+            <column name="presidente" length="90" />
+        </property>
+        <property name="contacto" type="string">
+            <column name="contacto" length="90" />
+        </property>
+        <set name="teners" table="tener" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fk_empresa" />
+            </key>
+            <one-to-many class="modelo.Tener" />
+        </set>
+    </class>
+</hibernate-mapping>

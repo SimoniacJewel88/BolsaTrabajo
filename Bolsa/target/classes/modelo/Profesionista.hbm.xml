@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/03/2018 01:44:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Profesionista" table="profesionista" schema="public" optimistic-lock="version">
+        <id name="idProfesionista" type="int">
+            <column name="id_profesionista" />
+            <generator class="assigned" />
+        </id>
+        <property name="carrera" type="string">
+            <column name="carrera" length="90" />
+        </property>
+        <property name="nacionalidad" type="string">
+            <column name="nacionalidad" length="90" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" length="90" />
+        </property>
+        <property name="telefonoProfesionista" type="string">
+            <column name="telefono_profesionista" length="13" />
+        </property>
+        <property name="nombreProfesionista" type="string">
+            <column name="nombre_profesionista" length="90" />
+        </property>
+        <property name="empresaLaboral" type="string">
+            <column name="empresa_laboral" length="90" />
+        </property>
+        <property name="correoProfesionista" type="string">
+            <column name="correo_profesionista" length="90" />
+        </property>
+        <property name="cargoLaboral" type="string">
+            <column name="cargo_laboral" length="90" />
+        </property>
+        <property name="periodoLaboral" type="string">
+            <column name="periodo_laboral" length="90" />
+        </property>
+        <property name="colegioFormacion" type="string">
+            <column name="colegio_formacion" length="90" />
+        </property>
+        <property name="gradoFormacion" type="string">
+            <column name="grado_formacion" length="90" />
+        </property>
+        <property name="periodoFormacion" type="string">
+            <column name="periodo_formacion" length="90" />
+        </property>
+        <property name="nombreSkils" type="string">
+            <column name="nombre_skils" length="90" />
+        </property>
+        <property name="gradoSkils" type="string">
+            <column name="grado_skils" length="90" />
+        </property>
+        <set name="postulars" table="postular" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fk_profesionista" />
+            </key>
+            <one-to-many class="modelo.Postular" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/03/2018 01:44:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Vacante" table="vacante" schema="public" optimistic-lock="version">
+        <id name="idVacante" type="int">
+            <column name="id_vacante" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="90" />
+        </property>
+        <property name="puesto" type="string">
+            <column name="puesto" length="90" />
+        </property>
+        <property name="horario" type="string">
+            <column name="horario" length="90" />
+        </property>
+        <property name="lugar" type="string">
+            <column name="lugar" length="90" />
+        </property>
+        <property name="salario" type="string">
+            <column name="salario" length="90" />
+        </property>
+        <property name="actividades" type="string">
+            <column name="actividades" length="90" />
+        </property>
+        <set name="postulars" table="postular" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fk_vacante" />
+            </key>
+            <one-to-many class="modelo.Postular" />
+        </set>
+        <set name="teners" table="tener" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fk_vacante" />
+            </key>
+            <one-to-many class="modelo.Tener" />
+        </set>
+    </class>
+</hibernate-mapping>
