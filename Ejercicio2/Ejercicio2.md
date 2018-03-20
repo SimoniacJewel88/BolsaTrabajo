@@ -36,9 +36,12 @@ Ejercicio 2 : Consultas en HQL
 ```
 * Todas las empresas que tengan vacantes para el puesto de Manager.
 ```shell
- From Empresa
+  from Tener as ten
+    inner join ten.vacante as id_vacante where id_vacante.puesto='Manager'
 ```
 * Todos los profesionistas que se postularon en la empresa Google.
 ```shell
- From Empresa
+  from Postular as pos, Tener as ten
+ 	inner join pos.vacante as id_vacante
+ 		inner join ten.empresa where id_empresa.nombre_Empresa='Google'
 ```
